@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="application.AboutController"
+      alignment="CENTER" spacing="20" prefWidth="500" prefHeight="350"
+      style="-fx-background-color: white; -fx-border-color: #3498db; -fx-border-width: 3;">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <Label text="ДОЛЕВОЕ ХРАНЕНИЕ v2.0" styleClass="about-title"/>
+    <Separator/>
+    <Label text="Распределённое хранение текстовых секретов"/>
+    <Label text="с использованием пороговой схемы Шамира (K из N)"/>
+    <Separator/>
+    <Label text="Любые K долей восстанавливают секрет"/>
+    <Label text="Менее K — ничего не дают"/>
+    <Separator/>
+
+    <Label text="2025" styleClass="version-label"/>
+    <Button fx:id="closeButton" text="Закрыть" onAction="#closeWindow" styleClass="close-button"/>
+</VBox>

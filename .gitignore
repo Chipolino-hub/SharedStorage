@@ -1,0 +1,30 @@
+# Build outputs
+/bin/
+/target/
+/build/
+/out/
+*.class
+*.jar
+*.exe
+
+# Local IDE, OS and temporary files
+.metadata/
+.idea/
+.vscode/
+*.iml
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Private local data, credentials and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+*_secret.txt
+*_доля_*.txt

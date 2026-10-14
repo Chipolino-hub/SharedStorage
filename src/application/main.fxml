@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="application.MainController"
+      spacing="10" style="-fx-background-color: #f5f5f5;">
+
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <padding>
+            <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Button text="О программе" onAction="#openAbout" style="-fx-font-weight: bold;"/>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="Разделить секрет">
+            <VBox spacing="20" style="-fx-padding: 20;">
+                <Label text="Разделение файла на доли" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <Label text="Выберите .txt файл и укажите параметры" style="-fx-text-fill: gray;"/>
+
+                <VBox fx:id="splitDropZone" style="-fx-background-color: #f0f8ff; -fx-border-color: #3498db; -fx-border-width: 2; -fx-border-style: dashed; -fx-padding: 40;" alignment="CENTER" spacing="10">
+                    <Label text="ПЕРЕТАЩИТЕ ФАЙЛ СЮДА" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                    <Button text="Выбрать файл" onAction="#selectFile"/>
+                    <Label fx:id="splitFileNameLabel" text="Файл не выбран"/>
+                </VBox>
+
+                <VBox spacing="15">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Всего долей (N):"/>
+                        <Slider fx:id="nSlider" prefWidth="200"/>
+                        <Label fx:id="nValueLabel" text="5" style="-fx-font-weight: bold;"/>
+                    </HBox>
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Нужно для восстановления (K):"/>
+                        <Slider fx:id="kSlider" prefWidth="200"/>
+                        <Label fx:id="kValueLabel" text="3" style="-fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+
+                <Button fx:id="splitButton" text="РАЗДЕЛИТЬ ФАЙЛ" onAction="#splitFile"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 12;"/>
+
+                <ProgressBar fx:id="splitProgressBar" visible="false" prefWidth="500"/>
+                <TextArea fx:id="splitLog" editable="false" prefHeight="120" style="-fx-font-family: Consolas;"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Восстановить секрет">
+            <VBox spacing="20" style="-fx-padding: 20;">
+                <Label text="Восстановление из долей" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <Label fx:id="restoreStatusLabel" text="Долей нет"/>
+                <Label fx:id="restoreWarningLabel" text="" 
+                       style="-fx-text-fill: #e67e22; -fx-font-weight: bold; -fx-font-style: italic; -fx-wrap-text: true;"/>
+
+                <VBox fx:id="restoreDropZone" style="-fx-background-color: #f0f8ff; -fx-border-color: #3498db; -fx-border-width: 2; -fx-border-style: dashed; -fx-padding: 40;" alignment="CENTER" spacing="10">
+                    <Label text="ПЕРЕТАЩИТЕ ДОЛИ СЮДА" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                    <Button text="Добавить доли" onAction="#addShareFiles"/>
+                </VBox>
+
+                <ListView fx:id="restoreFileList" prefHeight="150"/>
+                
+                <HBox spacing="10">
+                    <Button text="Очистить список" onAction="#clearRestoreList"/>
+                    <Button text="Удалить выбранную" onAction="#removeSelectedShare"/>
+                </HBox>
+
+                <Button fx:id="restoreButton" text="ВОССТАНОВИТЬ ФАЙЛ" onAction="#restoreFile" disable="true"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 12;"/>
+
+                <ProgressBar fx:id="restoreProgressBar" visible="false" prefWidth="500"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
